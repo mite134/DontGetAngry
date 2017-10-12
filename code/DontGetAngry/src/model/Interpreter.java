@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Interpreter {
 	private Game game;
-	private String command;
+	//private String command;
 	private boolean running;
 	private LinkedList<String> currentRoll=new LinkedList<String>();
 	public Interpreter() {
@@ -15,15 +15,15 @@ public class Interpreter {
 
 	public String[] getCommand() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("--Reading input in Interpeter.\nPlease insert input\n");
+        System.out.println("Please insert input\n");
         String input = sc.nextLine();
 		String[] command = input.split(" ");
 		return command;
 	}
 
-	public void cmdInterpret() {
-		String[] cmd = getCommand();
-                System.out.println("cmd in cmdInterpreter is " + Arrays.toString(cmd));
+	public void cmdInterpret(String [] cmd) {
+
+		System.out.println("cmd in cmdInterpreter is " + Arrays.toString(cmd));
 		
 		switch (cmd[0]) {
 		case "start":
@@ -64,7 +64,6 @@ public class Interpreter {
 			this.game = new Game(rules);
 			break;
 		case "roll":
-                        System.out.println("cmd[1] is " + cmd[1]);
 			if (running) {
 				switch (cmd[1]) {
 				case "6":
