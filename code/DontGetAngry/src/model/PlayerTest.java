@@ -46,6 +46,28 @@ public class PlayerTest {
     }
 
 
+    @Test
+    public void goInTest(){
+        player.GoIn();
+    }
+
+    @Test
+    public void winTest(){
+        player.Win();
+    }
+
+
+    @Test
+    public void setPawnPositionTest(){
+        player.setPawnPosition("SW", 2);
+    }
+
+    @Test
+    public void setPawnsTest(){
+        player.setPawns(new Pawn[2]);
+    }
+
+
 
 
     @After
