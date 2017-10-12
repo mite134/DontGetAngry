@@ -59,4 +59,9 @@ public class PawnTest {
     }
 
 
+    @After
+    public void tearDown(){
+        pawn = null;
+    }
+
 }
