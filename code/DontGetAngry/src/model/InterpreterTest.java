@@ -8,7 +8,7 @@ import model.Interpreter;
 
 public class InterpreterTest {
 
-    Interpreter interpreter;
+    private Interpreter interpreter;
 
     @Before
     public void setUp(){

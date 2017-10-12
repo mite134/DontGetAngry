@@ -12,7 +12,7 @@ import static org.junit.Assert.assertNotNull;
 
 public class PawnTest {
 
-    Pawn pawn;
+    private Pawn pawn;
 
     @Before
     public void setUp(){

@@ -12,7 +12,7 @@ import static org.junit.Assert.assertNotNull;
 
 public class PlayerTest {
 
-    Player player;
+    private Player player;
 
     @Before
     public void setUp(){
