@@ -1,4 +1,7 @@
+package model;
+
 import java.util.LinkedList;
+import java.util.Scanner;
 
 public class Interpreter {
 	private Game game;
@@ -7,9 +10,16 @@ public class Interpreter {
 	private LinkedList<String> currentRoll=new LinkedList<String>();
 	public Interpreter() {
 	}
+        
+        private void printError(){
+            System.out.print("Printing error");
+        }
 
 	public String[] getCommand() {
-		String input=Terminal.readLine();
+                Scanner sc = new Scanner(System.in);
+                System.out.println("Reading input in Interpeter.\nPlease insert input\n");
+                String i = sc.next();
+		String input=i;
 		String[] command = input.split(" ");
 		return command;
 	}
@@ -69,21 +79,21 @@ public class Interpreter {
 					break;
 				}
 			}else{
-				Terminal.printError("game is not running");
+				System.out.println("game is not running");
 			}
 			break;
 		case "print":
 			if (running) {
 				game.print();
 			}else{
-				Terminal.printError("game is not running");
+				System.out.println("game is not running");
 			}
 			break;
 		case "abort":
 			if (running) {
 				this.running = false;
 			}else{
-				Terminal.printError("game is not running");
+				System.out.println("game is not running");
 			}
 			break;
 		case "move":	
@@ -114,4 +124,5 @@ public class Interpreter {
 	public void abort() {
 
 	}
+        
 }

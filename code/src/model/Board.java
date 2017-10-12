@@ -1,3 +1,5 @@
+package model;
+
 public class Board {
 	private Field[] track= new Field[40];
 	private Field[] redGoal= new Field[4];

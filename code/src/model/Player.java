@@ -1,3 +1,6 @@
+package model;
+
+
 public class Player {
 	private Pawn[] pawns;
 	private String color;

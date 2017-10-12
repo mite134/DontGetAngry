@@ -1,3 +1,5 @@
+package model;
+
 import java.util.LinkedList;
 
 public class Game {
@@ -204,7 +206,7 @@ public class Game {
 	public void MovePawn(LinkedList<String> options, String current, String pos) {
 
 		if (!options.contains(current + "-" + pos)) {
-			Terminal.printError("Error, Invalid move");
+			System.out.println("Error, Invalid move");
 		} else {
 			for (int i = 0; i < 4; i++) {
 				if (this.players[this.active].getPawns()[i].getPosition().equalsIgnoreCase(current)) {
