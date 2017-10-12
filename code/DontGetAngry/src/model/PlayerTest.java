@@ -65,6 +65,8 @@ public class PlayerTest {
     @Test
     public void setPawnsTest(){
         player.setPawns(new Pawn[2]);
+
+        assertEquals(player.getPawns(), new Pawn[2]);
     }
 
 

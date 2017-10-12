@@ -59,9 +59,17 @@ public class PawnTest {
     }
 
 
+
+    @Test
+    public void setCoordinatesTest(){
+        pawn.setPosition("SW");
+    }
+
     @After
     public void tearDown(){
         pawn = null;
     }
+
+
 
 }
