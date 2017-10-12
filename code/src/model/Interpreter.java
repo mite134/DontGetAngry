@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -17,15 +18,15 @@ public class Interpreter {
 
 	public String[] getCommand() {
                 Scanner sc = new Scanner(System.in);
-                System.out.println("Reading input in Interpeter.\nPlease insert input\n");
-                String i = sc.next();
-		String input=i;
+                System.out.println("--Reading input in Interpeter.\nPlease insert input\n");
+                String input = sc.nextLine();
 		String[] command = input.split(" ");
 		return command;
 	}
 
 	public void cmdInterpret() {
 		String[] cmd = getCommand();
+                System.out.println("cmd in cmdInterpreter is " + Arrays.toString(cmd));
 		
 		switch (cmd[0]) {
 		case "start":
@@ -66,6 +67,7 @@ public class Interpreter {
 			this.game = new Game(rules);
 			break;
 		case "roll":
+                        System.out.println("cmd[1] is " + cmd[1]);
 			if (running) {
 				switch (cmd[1]) {
 				case "6":
