@@ -17,6 +17,12 @@ public class InterpreterTest {
         interpreter = new Interpreter();
     }
 
+
+    @Test
+    public void constructorTest(){
+        interpreter = new Interpreter();
+    }
+
     @Test
     public void getCommandTest(){
 //        String[] command = interpreter.getCommand();
@@ -125,6 +131,15 @@ public class InterpreterTest {
         interpreter.cmdInterpret(new String [] {"abort"});
     }
 
+
+    @Test
+    public void testOtherMethods(){
+        interpreter.start(0);
+        interpreter.move("","");
+        interpreter.roll();
+        interpreter.print();
+        interpreter.abort();
+    }
 
 
     @After
