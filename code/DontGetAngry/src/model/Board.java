@@ -1,11 +1,15 @@
 package model;
 
 public class Board {
+
+
 	private Field[] track= new Field[40];
 	private Field[] redGoal= new Field[4];
 	private Field[] blueGoal= new Field[4];
 	private Field[] greenGoal= new Field[4];
 	private Field[] yellowGoal= new Field[4];
+
+
 	public Board(){
 		for(int i = 0;i<this.track.length;i++){
 			this.track[i]=new Field(i+"");
