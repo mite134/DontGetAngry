@@ -6,3 +6,5 @@ code/nbproject
 /code/dist/
 *.idea
 *.iml
+out
+code/DontGetAngry/out
