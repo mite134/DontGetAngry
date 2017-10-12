@@ -12,14 +12,11 @@ public class Interpreter {
 	public Interpreter() {
 	}
         
-        private void printError(){
-            System.out.print("Printing error");
-        }
 
 	public String[] getCommand() {
-                Scanner sc = new Scanner(System.in);
-                System.out.println("--Reading input in Interpeter.\nPlease insert input\n");
-                String input = sc.nextLine();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("--Reading input in Interpeter.\nPlease insert input\n");
+        String input = sc.nextLine();
 		String[] command = input.split(" ");
 		return command;
 	}

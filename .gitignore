@@ -4,3 +4,5 @@ code/build.xml
 code/nbproject
 /code/build/
 /code/dist/
+*.idea
+*.iml
