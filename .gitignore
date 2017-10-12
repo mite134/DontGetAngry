@@ -8,3 +8,6 @@ code/nbproject
 *.iml
 out
 code/DontGetAngry/out
+*.classpath
+*.project
+bin
