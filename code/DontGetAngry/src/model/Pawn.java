@@ -5,6 +5,7 @@ public class Pawn {
 	private String color;
 	private String position;
 	private int endNum;
+
 	private int r;
 	public int getR() {
 		return r;
@@ -20,6 +21,7 @@ public class Pawn {
 
 	private int g;
 	private int b;
+
 
 
 	public Pawn(String color){
