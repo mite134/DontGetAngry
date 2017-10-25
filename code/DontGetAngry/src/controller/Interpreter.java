@@ -74,8 +74,7 @@ public class Interpreter {
 					String color = game.getColor();
 					// try {
 					int[] empty = { 240, 240, 240 };
-					this.screen.placeIcon(this.screen.getClicked().get(0), empty);
-					this.screen.placeIcon(this.screen.getClicked().get(1), game.getRGB());
+					
 					if (game.movePawn(currentRoll, this.screen.getClicked().get(0), this.screen.getClicked().get(1))) {
 						this.screen.cleanClicked();
 						for (String pos : this.enabledButtons) {
@@ -83,6 +82,8 @@ public class Interpreter {
 						}
 						this.enabledButtons = new LinkedList<String>();
 						game.print();
+						this.screen.placeIcon(this.screen.getClicked().get(1), game.getRGB());
+						this.screen.placeIcon(this.screen.getClicked().get(0), empty);
 						rollPhase();
 					}
 				}else{
