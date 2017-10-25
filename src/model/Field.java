@@ -1,8 +1,6 @@
 package model;
 
 public class Field {
-
-
 	private String takenBy = "noone";
 	private String name;
 

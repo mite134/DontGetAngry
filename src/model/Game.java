@@ -1,14 +1,12 @@
 package model;
 
 import java.util.LinkedList;
-import java.util.Random;
 
 public class Game {
 	private Player[] players;
 	private Board board;
 	private int active;
 	private int rules;
-	private int die;
 
 	public Game(int rules) {
 		this.players = new Player[4];
@@ -19,7 +17,6 @@ public class Game {
 		this.board = new Board();
 		this.active = 0;
 		this.rules = rules;
-		
 	}
 
 	public void goIn() {
@@ -58,14 +55,12 @@ public class Game {
 			}
 		}
 	}
-	public boolean isInHouse(int i){
-		return (this.players[this.active].getPawns()[i].getPosition()
-				.endsWith(this.players[this.active].getPawns()[i].getColor().substring(0, 1).toUpperCase()));
-	}
+
 	public LinkedList<String> CalculateMoves(int dice) {
 		LinkedList<String> options = new LinkedList<String>();
 		for (int i = 0; i < 4; i++) {
-			if (!isInHouse(i)) {
+			if (!(this.players[this.active].getPawns()[i].getPosition()
+					.endsWith(this.players[this.active].getPawns()[i].getColor().substring(0, 1).toUpperCase()))) {
 				int num = (Integer.parseInt(this.players[this.active].getPawns()[i].getPosition()) + dice) % 40;
 				if (num <= this.players[this.active].getPawns()[i].getEndNum() || Integer
 						.parseInt(this.players[this.active].getPawns()[i]
@@ -129,11 +124,18 @@ public class Game {
 			String[] positions = valid.get(i).split("-");
 			String tryingPos = positions[1];
 			String startingPos = positions[0];
-			if (this.board.checkField(tryingPos).equalsIgnoreCase(this.players[this.active].getColor())) {
+			if ((rules >> 1) % 2 == 1) { // barrier
+				// if
+				// (this.board.checkField(tryingPos).equalsIgnoreCase(this.players[this.active].getColor()))
+				// {
+				// this.board.occupy(tryingPos, "double " +
+				// this.players[this.active].getColor());
+				// }
+			} else if (this.board.checkField(tryingPos).equalsIgnoreCase(this.players[this.active].getColor())) {
 				System.out.println("test");
 				valid.remove(i);
 			}
-			/*if (rules % 2 == 1) { // backward
+			if (rules % 2 == 1) { // backward
 				if (!startingPos.endsWith(this.players[this.active].getColor().substring(0, 1).toUpperCase())) {
 					if (((Integer.parseInt(startingPos) + 40) - dice)
 							% 40 > this.players[this.active].getPawns()[0].getEndNum() + 1
@@ -150,8 +152,8 @@ public class Game {
 						}
 					}
 				}
-			}*/
-			if (rules == 2) { // nojump
+			}
+			if ((rules >> 2) % 2 == 1) { // nojump
 
 				String placeholder = tryingPos;
 				while (!placeholder.equalsIgnoreCase(startingPos)) {
@@ -209,7 +211,6 @@ public class Game {
 			for (int i = 0; i < 4; i++) {
 				if (this.players[this.active].getPawns()[i].getPosition().equalsIgnoreCase(current)) {
 					this.players[this.active].setPawnPosition(pos, i);
-					NextPlayer();
 					break;
 				}
 			}
@@ -219,28 +220,13 @@ public class Game {
 		}
 	}
 
-	public int getDie() {
-		return die;
-	}
-	public String getColor(){
-		return this.players[this.active].getColor();
-	}
-	public int[] getRGB(){
-		int[] rgb = new int[3];
-		rgb[0]=this.players[this.active].getPawns()[0].getR();
-		rgb[1]=this.players[this.active].getPawns()[0].getG();
-		rgb[2]=this.players[this.active].getPawns()[0].getB();
-		return rgb;
-	}
-	public void setDie(int die) {
-		this.die = die;
-	}
-
-	public LinkedList<String> throwDice() {
-		LinkedList<String> moves = CalculateMoves(this.die);
-		if(moves.size()==0){
-			System.out.println("next");
+	public LinkedList<String> throwDice(int dice) {
+		LinkedList<String> moves = CalculateMoves(dice);
+		if(moves.size()==0&&(rules >> 3) % 2 == 0){
 			NextPlayer();
+		}else if(moves.size()==0&&(rules >> 3) % 2 == 1){
+			System.out.println("You may roll again");
+			Interpreter.roll();
 		}else{
 			for(int i=0;i<moves.size();i++){
 				System.out.println(moves.get(i));
