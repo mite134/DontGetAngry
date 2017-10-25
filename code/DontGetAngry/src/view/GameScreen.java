@@ -6,11 +6,6 @@ import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import java.awt.GridBagLayout;
-import java.awt.Image;
-
-import javax.imageio.ImageIO;
-import javax.swing.AbstractButton;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.GridBagConstraints;
 import java.awt.Color;
@@ -499,7 +494,9 @@ public class GameScreen implements MouseListener {
 				addClicked(temp.getText());
 			}
 		});
+		btn1.setEnabled(false);
 		GridBagConstraints gbc_button_24 = new GridBagConstraints();
+		gbc_button_24.insets = new Insets(0, 0, 5, 5);
 		gbc_button_24.gridx = 3;
 		gbc_button_24.gridy = 7;
 		getFrmDontGetAngry().getContentPane().add(btn1, gbc_button_24);

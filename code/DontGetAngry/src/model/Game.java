@@ -5,8 +5,16 @@ import java.util.Random;
 
 public class Game {
 	private Player[] players;
-	private Board board;
+
+	public Player[] getPlayers() {
+		return players;
+	}
+
 	private int active;
+	public int getActive() {
+		return active;
+	}
+
 	private int rules;
 	private int die;
 
@@ -16,7 +24,6 @@ public class Game {
 		this.players[1] = new Player("blue");
 		this.players[2] = new Player("green");
 		this.players[3] = new Player("yellow");
-		this.board = new Board();
 		this.active = 0;
 		this.rules = rules;
 		
@@ -34,17 +41,10 @@ public class Game {
 		}
 	}
 
-	public void NextPlayer() {
+	public void nextPlayer() {
 		this.active = (this.active + 1) % 4;
 	}
 
-	public void onBoard() {
-		for (int i = 0; i < 4; i++) {
-			for (int b = 0; b < 4; b++) {
-				this.board.occupy(this.players[i].getPawns()[b]);
-			}
-		}
-	}
 
 	public void checkCollision(String pos) {
 		for (int i = 0; i < 4; i++) {
@@ -120,9 +120,9 @@ public class Game {
 				}
 			}
 		}
-		return CheckRules(options, dice);
+		return options;
 	}
-
+/*
 	public LinkedList<String> CheckRules(LinkedList<String> options, int dice) {
 		LinkedList<String> valid = options;
 		for (int i = 0; i < valid.size(); i++) {
@@ -150,7 +150,7 @@ public class Game {
 						}
 					}
 				}
-			}*/
+			}
 			if (rules == 2) { // nojump
 
 				String placeholder = tryingPos;
@@ -167,7 +167,7 @@ public class Game {
 		}
 		return valid;
 	}
-
+*/
 	public String prev(String current) { // Did it far too late
 		String previous = null;
 		if (!(current.endsWith("R") || current.endsWith("B") || current.endsWith("G") || current.endsWith("Y"))) {
@@ -201,22 +201,27 @@ public class Game {
 		return previous;
 	}
 
-	public void MovePawn(LinkedList<String> options, String current, String pos) {
+	public boolean movePawn(LinkedList<String> options, String current, String pos) {
 
 		if (!options.contains(current + "-" + pos)) {
 			System.out.println("Error, Invalid move");
+			return false;
 		} else {
+			System.out.println(current + "-" + pos);
 			for (int i = 0; i < 4; i++) {
 				if (this.players[this.active].getPawns()[i].getPosition().equalsIgnoreCase(current)) {
 					this.players[this.active].setPawnPosition(pos, i);
-					NextPlayer();
-					break;
+					checkCollision(pos);
+					if (this.players[this.active].Win()) {
+						System.out.println(players[active].getColor() + " winner");
+					}
+					nextPlayer();
+					return true;
 				}
 			}
 		}
-		if (this.players[this.active].Win()) {
-			System.out.println(players[active].getColor() + " winner");
-		}
+		return false;
+		
 	}
 
 	public int getDie() {
@@ -240,7 +245,7 @@ public class Game {
 		LinkedList<String> moves = CalculateMoves(this.die);
 		if(moves.size()==0){
 			System.out.println("next");
-			NextPlayer();
+			nextPlayer();
 		}else{
 			for(int i=0;i<moves.size();i++){
 				System.out.println(moves.get(i));

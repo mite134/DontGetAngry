@@ -31,61 +31,7 @@ public class Board {
 		this.yellowGoal[2]=new Field("CY");
 		this.yellowGoal[3]=new Field("DY");
 	}
-	public void occupy(Pawn p){
-		String pos = p.getPosition();
-		for(int i=0;i<track.length;i++){
-			if(pos.equalsIgnoreCase(track[i].getName())){
-				track[i].setTakenBy(p.getColor());
-			}
-		}
-		for(int i=0;i<redGoal.length;i++){
-			if(pos.equalsIgnoreCase(track[i].getName())){
-				redGoal[i].setTakenBy(p.getColor());
-			}
-		}
-		for(int i=0;i<blueGoal.length;i++){
-			if(pos.equalsIgnoreCase(track[i].getName())){
-				blueGoal[i].setTakenBy(p.getColor());
-			}
-		}
-		for(int i=0;i<greenGoal.length;i++){
-			if(pos.equalsIgnoreCase(track[i].getName())){
-				greenGoal[i].setTakenBy(p.getColor());
-			}
-		}
-		for(int i=0;i<yellowGoal.length;i++){
-			if(pos.equalsIgnoreCase(track[i].getName())){
-				yellowGoal[i].setTakenBy(p.getColor());
-			}
-		}
-	}
-	public void occupy(String position, String owner){
-		for(int i=0;i<track.length;i++){
-			if(position.equalsIgnoreCase(track[i].getName())){
-				track[i].setTakenBy(owner);
-			}
-		}
-		for(int i=0;i<redGoal.length;i++){
-			if(position.equalsIgnoreCase(track[i].getName())){
-				redGoal[i].setTakenBy(owner);
-			}
-		}
-		for(int i=0;i<blueGoal.length;i++){
-			if(position.equalsIgnoreCase(track[i].getName())){
-				blueGoal[i].setTakenBy(owner);
-			}
-		}
-		for(int i=0;i<greenGoal.length;i++){
-			if(position.equalsIgnoreCase(track[i].getName())){
-				greenGoal[i].setTakenBy(owner);
-			}
-		}
-		for(int i=0;i<yellowGoal.length;i++){
-			if(position.equalsIgnoreCase(track[i].getName())){
-				yellowGoal[i].setTakenBy(owner);
-			}
-		}
-	}
+
 	public Field[] getTrack() {
 		return track;
 	}
