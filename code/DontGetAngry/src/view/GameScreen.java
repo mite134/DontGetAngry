@@ -55,7 +55,7 @@ public class GameScreen implements MouseListener {
 				JButton temp = (JButton) comp;
 				if (temp.getText().equalsIgnoreCase(text)) {
 					comp.setEnabled(true);
-					((JButton) comp).setOpaque(false);
+					((JButton) comp).setOpaque(true);
 				}
 			}
 		}

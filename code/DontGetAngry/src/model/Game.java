@@ -120,6 +120,15 @@ public class Game {
 				}
 			}
 		}
+		for(String s:options){
+			String going = s.split("-")[1];
+			for(String b:options){
+				String starting= b.split("-")[0];
+				if(going.equalsIgnoreCase(starting)){
+					options.remove(s);
+				}
+			}
+		}
 		return options;
 	}
 /*

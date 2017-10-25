@@ -68,27 +68,24 @@ public class Interpreter {
 		while (true) {
 
 			System.out.println(this.currentRoll.size());
-
+			
 			if (this.screen.getClicked().size() == 2) {
-				if (currentRoll.contains(this.screen.getClicked().get(0) + "-" + this.screen.getClicked().get(1))) {
-					String color = game.getColor();
-					// try {
-					int[] empty = { 240, 240, 240 };
+				if(currentRoll.contains(this.screen.getClicked().get(0)+"-"+this.screen.getClicked().get(1))){
+				String color = game.getColor();
+				// try {
+				int[] empty = { 240, 240, 240 };
+				this.screen.placeIcon(this.screen.getClicked().get(0), empty);
+				this.screen.placeIcon(this.screen.getClicked().get(1), game.getRGB());
+				if (game.movePawn(currentRoll, this.screen.getClicked().get(0), this.screen.getClicked().get(1))) {
 					
-					if (game.movePawn(currentRoll, this.screen.getClicked().get(0), this.screen.getClicked().get(1))) {
-						this.screen.cleanClicked();
-						for (String pos : this.enabledButtons) {
-							this.screen.disableButton(pos);
-						}
-						this.enabledButtons = new LinkedList<String>();
-						game.print();
-						this.screen.placeIcon(this.screen.getClicked().get(1), game.getRGB());
-						this.screen.placeIcon(this.screen.getClicked().get(0), empty);
-						rollPhase();
+					for (String pos : this.enabledButtons) {
+						this.screen.disableButton(pos);
 					}
-				}else{
+					this.enabledButtons = new LinkedList<String>();
+					game.print();
 					this.screen.cleanClicked();
-				}
+					rollPhase();
+				}}
 				// } catch (Exception e) {
 				// System.out.println(e.getClass());
 				// }
