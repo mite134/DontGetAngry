@@ -1,36 +1,23 @@
 package controller;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Random;
-import java.util.Scanner;
 
 import model.Game;
 
 public class Interpreter {
 	private Game game;
 	private view.GameScreen screen;
-	private boolean running;
 
 	private LinkedList<String> currentRoll = new LinkedList<String>();
 	private LinkedList<String> enabledButtons = new LinkedList<String>();
 
 	public Interpreter(view.GameScreen screen, int rules) {
-		this.game = new Game(rules);
+		this.game = new Game();
 		this.screen = screen;
 	}
 
 	public void rollPhase() {
-		/*
-		 * switch (cmd[0]) { case "start": this.running = true; int rules = 0;
-		 * boolean triply = false; boolean nojump = false; boolean barrier =
-		 * false; boolean backward = false; for (int i = 1; i < cmd.length; i++)
-		 * { switch (cmd[i].toLowerCase()) { case "backward": backward = true;
-		 * break; case "nojump": nojump = true; break; case "triply": triply =
-		 * true; break; case "barrier": barrier = true; break; } } if (triply) {
-		 * rules = 4; } if (nojump) { rules = 3; } if (barrier) { rules = 2; }
-		 * if (backward) { rules = 1; } this.game = new Game(rules); break;
-		 */
 		while (true) {
 			if (this.screen.isRolled()) {
 				this.screen.changeLabel("It's the " + game.getColor() + " Player's turn!");
@@ -71,7 +58,6 @@ public class Interpreter {
 			
 			if (this.screen.getClicked().size() == 2) {
 				if(currentRoll.contains(this.screen.getClicked().get(0)+"-"+this.screen.getClicked().get(1))){
-				String color = game.getColor();
 				// try {
 				int[] empty = { 240, 240, 240 };
 				this.screen.placeIcon(this.screen.getClicked().get(0), empty);

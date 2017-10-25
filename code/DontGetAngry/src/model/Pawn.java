@@ -6,6 +6,8 @@ public class Pawn {
 	private String position;
 	private int endNum;
 
+	private int g;
+	private int b;
 	private int r;
 	public int getR() {
 		return r;
@@ -19,8 +21,6 @@ public class Pawn {
 		return b;
 	}
 
-	private int g;
-	private int b;
 
 
 
