@@ -31,7 +31,7 @@ public class PawnTest {
         assertEquals(pawn.getColor(), "yellow");
         pawn = new Pawn("green");
         assertEquals(pawn.getColor(), "green");
-        pawn = new Pawn("red", "S");
+
 
     }
 
