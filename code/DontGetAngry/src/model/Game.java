@@ -31,7 +31,9 @@ public class Game {
 	}
 
 	public int goIn() {
-		return this.players[this.active].GoIn();
+		int temp=this.players[this.active].GoIn();
+		checkCollision(temp+"");
+		return temp;
 	}
 
 	public void print() {
@@ -72,7 +74,7 @@ public class Game {
 						.parseInt(this.players[this.active].getPawns()[i]
 								.getPosition()) > this.players[this.active].getPawns()[i].getEndNum()
 						&& !(this.players[this.active].getPawns()[i].getColor().equalsIgnoreCase("red")
-								&& Integer.parseInt(this.players[this.active].getPawns()[i].getPosition()) - num > 0)) {
+								&& Integer.parseInt(this.players[this.active].getPawns()[i].getPosition()) - num < 0)) {
 
 					options.add(this.players[this.active].getPawns()[i].getPosition() + "-" + num);
 				} else {
@@ -102,34 +104,31 @@ public class Game {
 			} else {
 				if (this.players[this.active].getPawns()[i].getPosition().startsWith("A") && dice == 3) {
 					options.add(this.players[this.active].getPawns()[i].getPosition() + "-" + "D"
-							+ this.players[this.active].getPawns()[i].getColor().substring(0, 1));
+							+ this.players[this.active].getPawns()[i].getColor().substring(0, 1).toUpperCase());
 				} else if (this.players[this.active].getPawns()[i].getPosition().startsWith("A") && dice == 2) {
 					options.add(this.players[this.active].getPawns()[i].getPosition() + "-" + "C"
-							+ this.players[this.active].getPawns()[i].getColor().substring(0, 1));
+							+ this.players[this.active].getPawns()[i].getColor().substring(0, 1).toUpperCase());
 				} else if (this.players[this.active].getPawns()[i].getPosition().startsWith("A") && dice == 1) {
 					options.add(this.players[this.active].getPawns()[i].getPosition() + "-" + "B"
-							+ this.players[this.active].getPawns()[i].getColor().substring(0, 1));
+							+ this.players[this.active].getPawns()[i].getColor().substring(0, 1).toUpperCase());
 				} else if (this.players[this.active].getPawns()[i].getPosition().startsWith("B") && dice == 1) {
 					options.add(this.players[this.active].getPawns()[i].getPosition() + "-" + "C"
-							+ this.players[this.active].getPawns()[i].getColor().substring(0, 1));
+							+ this.players[this.active].getPawns()[i].getColor().substring(0, 1).toUpperCase());
 				} else if (this.players[this.active].getPawns()[i].getPosition().startsWith("B") && dice == 2) {
 					options.add(this.players[this.active].getPawns()[i].getPosition() + "-" + "D"
-							+ this.players[this.active].getPawns()[i].getColor().substring(0, 1));
+							+ this.players[this.active].getPawns()[i].getColor().substring(0, 1).toUpperCase());
 				} else if (this.players[this.active].getPawns()[i].getPosition().startsWith("C") && dice == 1) {
 					options.add(this.players[this.active].getPawns()[i].getPosition() + "-" + "D"
-							+ this.players[this.active].getPawns()[i].getColor().substring(0, 1));
+							+ this.players[this.active].getPawns()[i].getColor().substring(0, 1).toUpperCase());
 				}
 			}
 		}
 		LinkedList<String> temp=options;
 
-		LinkedList<String> temp2=options;
 		for(String s:temp){
 			String going = s.split("-")[1];
-			for(int i=0;i<temp2.size();i++){
-				String b= temp2.get(i);
-				String starting= b.split("-")[0];
-				if(going.equalsIgnoreCase(starting)){
+			for (int i = 0; i < 4; i++) {
+				if (this.players[this.active].getPawns()[i].getPosition().equalsIgnoreCase(going)) {
 					options.remove(s);
 				}
 			}

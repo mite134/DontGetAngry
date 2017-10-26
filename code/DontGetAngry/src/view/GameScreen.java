@@ -84,20 +84,20 @@ public class GameScreen implements MouseListener {
 		for (Component comp : comps) {
 			if (comp instanceof JLabel) {
 				JLabel temp = (JLabel) comp;
-				if (temp.getText().startsWith("Don")||temp.getText().startsWith("It")) {
-				((JLabel) comp).setText(text);
+				if (temp.getText().startsWith("Don") || temp.getText().startsWith("It")) {
+					((JLabel) comp).setText(text);
 				}
 			}
 		}
 	}
-	
+
 	public void changeDiceLabel(String text) {
 		Component[] comps = getFrmDontGetAngry().getContentPane().getComponents();
 		for (Component comp : comps) {
 			if (comp instanceof JLabel) {
 				JLabel temp = (JLabel) comp;
-				if (!temp.getText().startsWith("D")&&!temp.getText().startsWith("It")) {
-				((JLabel) comp).setText(text);
+				if (!temp.getText().startsWith("D") && !temp.getText().startsWith("It")) {
+					((JLabel) comp).setText(text);
 				}
 			}
 		}
@@ -116,7 +116,11 @@ public class GameScreen implements MouseListener {
 							((JButton) comp).setOpaque(false);
 						}
 					} catch (Exception ex) {
-						System.out.println(ex);
+						try {
+							failToPaint();
+						} catch (Exception exc) {
+							System.out.println(exc);
+						}
 					}
 				}
 			}
@@ -145,12 +149,19 @@ public class GameScreen implements MouseListener {
 	public GameScreen() {
 		initialize();
 	}
-	public void Win(){
-		JOptionPane.showMessageDialog(frmDontGetAngry,"YOU WIN!");
+
+	public void Win() {
+		JOptionPane.showMessageDialog(frmDontGetAngry, "YOU WIN!");
 	}
-	public void WrongMove(){
-		JOptionPane.showMessageDialog(frmDontGetAngry,"Wrong Move!");
+
+	public void WrongMove() {
+		JOptionPane.showMessageDialog(frmDontGetAngry, "Wrong Move!");
 	}
+
+	public void failToPaint() {
+		JOptionPane.showMessageDialog(frmDontGetAngry, "Failed to paint");
+	}
+
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -173,7 +184,6 @@ public class GameScreen implements MouseListener {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(frmDontGetAngry,
 						"Players alternate turns in a clockwise direction.To enter a token into play from its yard to its starting square,\n a player must roll a 6.Rolling a 6 earns the player an additional or \"bonus\" roll in that turn. \n If the player has no tokens yet in play and rolls other than a 6, the turn passes to the next player.\n Once a player has one or more tokens in play, he selects a token and moves \nit forwards along the track the number of squares indicated by the die. Players must always move a token according\n to the die value rolled. Passes are not allowed; if no move is possible, the turn moves to the next player.\nPlayers may not end their move on a square they already occupy. If the advance of a token ends on a square occupied by\n an opponent's token, the opponent token is returned to its owner's yard. ");
-				
 
 			}
 
@@ -181,7 +191,7 @@ public class GameScreen implements MouseListener {
 		mnNewGame.add(mntmHelp);
 
 		JMenuItem mntmExit = new JMenuItem("Exit");
-		mntmExit.addActionListener(new ActionListener(){
+		mntmExit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
@@ -309,14 +319,14 @@ public class GameScreen implements MouseListener {
 				addClicked(temp.getText());
 			}
 		});
-		
+
 		JLabel lblNewLabel_2 = new JLabel("Die:");
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_2.gridx = 6;
 		gbc_lblNewLabel_2.gridy = 2;
 		frmDontGetAngry.getContentPane().add(lblNewLabel_2, gbc_lblNewLabel_2);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("0");
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
