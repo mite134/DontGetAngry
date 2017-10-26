@@ -13,14 +13,21 @@ public class Player {
 		}
 	}
 
-	public boolean GoIn() {
+	public int GoIn() {
+		for (int i = 0; i < 4; i++) {
+			if (pawns[i].getPosition().equals((pawns[i].getEndNum() + 1) % 40 + "")) {
+				pawns[i].setPosition((pawns[i].getEndNum() + 7) % 40 + "");
+				return (pawns[i].getEndNum() + 7) % 40;
+			}
+		}
+
 		for (int i = 0; i < 4; i++) {
 			if (pawns[i].getPosition().startsWith("S")) {
 				pawns[i].setPosition((pawns[i].getEndNum() + 1) % 40 + "");
-				return true;
+				return (pawns[i].getEndNum() + 1) % 40;
 			}
 		}
-		return false;
+		return -1;
 	}
 
 	public boolean Win() {

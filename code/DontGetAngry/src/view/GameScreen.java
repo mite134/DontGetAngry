@@ -83,8 +83,22 @@ public class GameScreen implements MouseListener {
 		Component[] comps = getFrmDontGetAngry().getContentPane().getComponents();
 		for (Component comp : comps) {
 			if (comp instanceof JLabel) {
+				JLabel temp = (JLabel) comp;
+				if (temp.getText().startsWith("Don")||temp.getText().startsWith("It")) {
 				((JLabel) comp).setText(text);
-				;
+				}
+			}
+		}
+	}
+	
+	public void changeDiceLabel(String text) {
+		Component[] comps = getFrmDontGetAngry().getContentPane().getComponents();
+		for (Component comp : comps) {
+			if (comp instanceof JLabel) {
+				JLabel temp = (JLabel) comp;
+				if (!temp.getText().startsWith("D")&&!temp.getText().startsWith("It")) {
+				((JLabel) comp).setText(text);
+				}
 			}
 		}
 	}
@@ -131,7 +145,12 @@ public class GameScreen implements MouseListener {
 	public GameScreen() {
 		initialize();
 	}
-
+	public void Win(){
+		JOptionPane.showMessageDialog(frmDontGetAngry,"YOU WIN!");
+	}
+	public void WrongMove(){
+		JOptionPane.showMessageDialog(frmDontGetAngry,"Wrong Move!");
+	}
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -290,6 +309,20 @@ public class GameScreen implements MouseListener {
 				addClicked(temp.getText());
 			}
 		});
+		
+		JLabel lblNewLabel_2 = new JLabel("Die:");
+		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
+		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_2.gridx = 6;
+		gbc_lblNewLabel_2.gridy = 2;
+		frmDontGetAngry.getContentPane().add(lblNewLabel_2, gbc_lblNewLabel_2);
+		
+		JLabel lblNewLabel_1 = new JLabel("0");
+		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_1.gridx = 7;
+		gbc_lblNewLabel_1.gridy = 2;
+		frmDontGetAngry.getContentPane().add(lblNewLabel_1, gbc_lblNewLabel_1);
 		btnSb3.setEnabled(false);
 		btnSb3.setForeground(Color.BLUE);
 		GridBagConstraints gbc_button_10 = new GridBagConstraints();

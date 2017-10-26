@@ -17,7 +17,7 @@ public class Interpreter {
 		this.screen = screen;
 	}
 
-	public void rollPhase() {
+	public void rollPhase() throws InterruptedException {
 		while (true) {
 			if (this.screen.isRolled()) {
 				this.screen.changeLabel("It's the " + game.getColor() + " Player's turn!");
@@ -25,14 +25,20 @@ public class Interpreter {
 				int result = r.nextInt(6) + 1;
 				this.game.setDie(result);
 				int dice = this.game.getDie();
+				this.screen.changeDiceLabel(dice+"");
 				switch (dice) {
 				case 6:
-					if (game.goIn()) {
-						this.screen.placeIcon(
-								(game.getPlayers()[game.getActive()].getPawns()[0].getEndNum() + 1) % 40 + "",
-								game.getRGB());
+					int temp=game.goIn();
+					if (temp>=0) {
+						
+						this.screen.placeIcon((temp + ""),game.getRGB());
 						this.screen.setRolled(false);
+						if(temp!=0&&temp!=10&&temp!=20&&temp!=30){
+							int[] empty = { 240, 240, 240 };
+							this.screen.placeIcon(((temp+34)%40 + ""),empty);
+						}
 						break;
+						
 					}else{
 						currentRoll = game.throwDice();
 						for (int a = 0; a < currentRoll.size(); a++) {
@@ -69,7 +75,7 @@ public class Interpreter {
 		}
 	}
 
-	public void movePhase() {
+	public void movePhase() throws InterruptedException {
 		while (true) {
 
 			System.out.println(this.currentRoll.size());
@@ -81,7 +87,10 @@ public class Interpreter {
 					this.screen.placeIcon(this.screen.getClicked().get(0), empty);
 					this.screen.placeIcon(this.screen.getClicked().get(1), game.getRGB());
 					if (game.movePawn(currentRoll, this.screen.getClicked().get(0), this.screen.getClicked().get(1))) {
-
+						if(game.isWinner()){
+							this.screen.wait();
+							break;
+						}
 						for (String pos : this.enabledButtons) {
 							this.screen.disableButton(pos);
 						}
@@ -90,6 +99,9 @@ public class Interpreter {
 						this.screen.cleanClicked();
 						rollPhase();
 					}
+				}else{
+					this.screen.WrongMove();
+					this.screen.cleanClicked();
 				}
 				// } catch (Exception e) {
 				// System.out.println(e.getClass());

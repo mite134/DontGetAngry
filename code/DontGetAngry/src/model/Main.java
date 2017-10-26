@@ -17,7 +17,12 @@ public class Main {
 				        @Override
 				        public void run() {
 				        	Interpreter i = new Interpreter(window);
-							i.rollPhase();
+							try {
+								i.rollPhase();
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
 				        }     
 				    });
 				    t.start();

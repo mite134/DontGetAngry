@@ -4,6 +4,10 @@ import java.util.LinkedList;
 
 public class Game {
 	private Player[] players;
+	private boolean winner=false;
+	public boolean isWinner() {
+		return winner;
+	}
 
 	private int die;
 	private int active;
@@ -26,7 +30,7 @@ public class Game {
 		
 	}
 
-	public boolean goIn() {
+	public int goIn() {
 		return this.players[this.active].GoIn();
 	}
 
@@ -62,7 +66,7 @@ public class Game {
 	public LinkedList<String> CalculateMoves(int dice) {
 		LinkedList<String> options = new LinkedList<String>();
 		for (int i = 0; i < 4; i++) {
-			if (!isInHouse(i)) {
+			if (!isInHouse(i)&&!this.players[this.active].getPawns()[i].getPosition().startsWith("S")) {
 				int num = (Integer.parseInt(this.players[this.active].getPawns()[i].getPosition()) + dice) % 40;
 				if (num <= this.players[this.active].getPawns()[i].getEndNum() || Integer
 						.parseInt(this.players[this.active].getPawns()[i]
@@ -76,19 +80,19 @@ public class Game {
 					switch (newNum) {
 					case 1:
 						options.add(this.players[this.active].getPawns()[i].getPosition() + "-" + "A"
-								+ this.players[this.active].getPawns()[i].getColor().substring(0, 1));
+								+ this.players[this.active].getPawns()[i].getColor().substring(0, 1).toUpperCase());
 						break;
 					case 2:
 						options.add(this.players[this.active].getPawns()[i].getPosition() + "-" + "B"
-								+ this.players[this.active].getPawns()[i].getColor().substring(0, 1));
+								+ this.players[this.active].getPawns()[i].getColor().substring(0, 1).toUpperCase());
 						break;
 					case 3:
 						options.add(this.players[this.active].getPawns()[i].getPosition() + "-" + "C"
-								+ this.players[this.active].getPawns()[i].getColor().substring(0, 1));
+								+ this.players[this.active].getPawns()[i].getColor().substring(0, 1).toUpperCase());
 						break;
 					case 4:
 						options.add(this.players[this.active].getPawns()[i].getPosition() + "-" + "D"
-								+ this.players[this.active].getPawns()[i].getColor().substring(0, 1));
+								+ this.players[this.active].getPawns()[i].getColor().substring(0, 1).toUpperCase());
 						break;
 					default:
 						break;
@@ -117,9 +121,13 @@ public class Game {
 				}
 			}
 		}
-		for(String s:options){
+		LinkedList<String> temp=options;
+
+		LinkedList<String> temp2=options;
+		for(String s:temp){
 			String going = s.split("-")[1];
-			for(String b:options){
+			for(int i=0;i<temp2.size();i++){
+				String b= temp2.get(i);
 				String starting= b.split("-")[0];
 				if(going.equalsIgnoreCase(starting)){
 					options.remove(s);
@@ -142,7 +150,7 @@ public class Game {
 					this.players[this.active].setPawnPosition(pos, i);
 					checkCollision(pos);
 					if (this.players[this.active].Win()) {
-						System.out.println(players[active].getColor() + " winner");
+						this.winner=true;
 					}
 					nextPlayer();
 					return true;
