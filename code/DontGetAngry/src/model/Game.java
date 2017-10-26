@@ -70,15 +70,14 @@ public class Game {
 		for (int i = 0; i < 4; i++) {
 			if (!isInHouse(i)&&!this.players[this.active].getPawns()[i].getPosition().startsWith("S")) {
 				int num = (Integer.parseInt(this.players[this.active].getPawns()[i].getPosition()) + dice) % 40;
-				if (num <= this.players[this.active].getPawns()[i].getEndNum() || Integer
+				if ((num <= this.players[this.active].getPawns()[i].getEndNum() || Integer
 						.parseInt(this.players[this.active].getPawns()[i]
-								.getPosition()) > this.players[this.active].getPawns()[i].getEndNum()
+								.getPosition()) > this.players[this.active].getPawns()[i].getEndNum())
 						&& !(this.players[this.active].getPawns()[i].getColor().equalsIgnoreCase("red")
-								&& Integer.parseInt(this.players[this.active].getPawns()[i].getPosition()) - num < 0)) {
-
+								&& Integer.parseInt(this.players[this.active].getPawns()[i].getPosition()) - num > 0)) {
 					options.add(this.players[this.active].getPawns()[i].getPosition() + "-" + num);
 				} else {
-					int newNum = num - this.players[this.active].getPawns()[i].getEndNum();
+					int newNum = (num+40 - this.players[this.active].getPawns()[i].getEndNum())%40;
 					switch (newNum) {
 					case 1:
 						options.add(this.players[this.active].getPawns()[i].getPosition() + "-" + "A"
@@ -123,7 +122,10 @@ public class Game {
 				}
 			}
 		}
-		LinkedList<String> temp=options;
+		LinkedList<String> temp=new LinkedList<String>();
+		for(String i:options){
+		temp.add(i);	
+		}
 
 		for(String s:temp){
 			String going = s.split("-")[1];
