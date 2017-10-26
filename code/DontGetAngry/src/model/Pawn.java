@@ -21,9 +21,6 @@ public class Pawn {
 		return b;
 	}
 
-
-
-
 	public Pawn(String color){
 		this.color=color;
 		this.position="S"+this.color.substring(0, 1).toUpperCase();

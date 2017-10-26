@@ -26,8 +26,8 @@ public class Game {
 		
 	}
 
-	public void goIn() {
-		this.players[this.active].GoIn();
+	public boolean goIn() {
+		return this.players[this.active].GoIn();
 	}
 
 	public void print() {

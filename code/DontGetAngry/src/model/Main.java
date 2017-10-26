@@ -16,7 +16,7 @@ public class Main {
 					Thread t = new Thread(new Runnable() {
 				        @Override
 				        public void run() {
-				        	Interpreter i = new Interpreter(window,1);
+				        	Interpreter i = new Interpreter(window);
 							i.rollPhase();
 				        }     
 				    });

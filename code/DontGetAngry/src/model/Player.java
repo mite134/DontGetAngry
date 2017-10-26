@@ -13,13 +13,14 @@ public class Player {
 		}
 	}
 
-	public void GoIn() {
+	public boolean GoIn() {
 		for (int i = 0; i < 4; i++) {
 			if (pawns[i].getPosition().startsWith("S")) {
 				pawns[i].setPosition((pawns[i].getEndNum() + 1) % 40 + "");
-				break;
+				return true;
 			}
 		}
+		return false;
 	}
 
 	public boolean Win() {

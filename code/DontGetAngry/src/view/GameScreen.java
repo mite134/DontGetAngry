@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -26,7 +27,12 @@ public class GameScreen implements MouseListener {
 
 	private JFrame frmDontGetAngry;
 	private boolean rolled = false;
+	private boolean toBeRestrted = false;
 	private List<String> clicked = new ArrayList<String>();
+
+	public boolean isToBeRestrted() {
+		return toBeRestrted;
+	}
 
 	public List<String> getClicked() {
 		return clicked;
@@ -72,11 +78,13 @@ public class GameScreen implements MouseListener {
 			}
 		}
 	}
+
 	public void changeLabel(String text) {
 		Component[] comps = getFrmDontGetAngry().getContentPane().getComponents();
 		for (Component comp : comps) {
 			if (comp instanceof JLabel) {
-					((JLabel) comp).setText(text);;
+				((JLabel) comp).setText(text);
+				;
 			}
 		}
 	}
@@ -90,7 +98,7 @@ public class GameScreen implements MouseListener {
 					try {
 						((JButton) comp).setOpaque(true);
 						((JButton) comp).setBackground(new Color(rgb[0], rgb[1], rgb[2]));
-						if(rgb[0]==240&&rgb[1]==240&&rgb[2]==240){
+						if (rgb[0] == 240 && rgb[1] == 240 && rgb[2] == 240) {
 							((JButton) comp).setOpaque(false);
 						}
 					} catch (Exception ex) {
@@ -124,10 +132,6 @@ public class GameScreen implements MouseListener {
 		initialize();
 	}
 
-	public void newGame() {
-		// TODO
-	}
-
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -143,19 +147,27 @@ public class GameScreen implements MouseListener {
 		JMenu mnNewGame = new JMenu("Menu");
 		menuBar.add(mnNewGame);
 
-		JMenuItem mntmNewGame = new JMenuItem("New Game");
-		mntmNewGame.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				newGame();
-			}
-		});
-		mnNewGame.add(mntmNewGame);
-
 		JMenuItem mntmHelp = new JMenuItem("Help");
+		mntmHelp.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(frmDontGetAngry,
+						"Players alternate turns in a clockwise direction.To enter a token into play from its yard to its starting square,\n a player must roll a 6.Rolling a 6 earns the player an additional or \"bonus\" roll in that turn. \n If the player has no tokens yet in play and rolls other than a 6, the turn passes to the next player.\n Once a player has one or more tokens in play, he selects a token and moves \nit forwards along the track the number of squares indicated by the die. Players must always move a token according\n to the die value rolled. Passes are not allowed; if no move is possible, the turn moves to the next player.\nPlayers may not end their move on a square they already occupy. If the advance of a token ends on a square occupied by\n an opponent's token, the opponent token is returned to its owner's yard. ");
+				
+
+			}
+
+		});
 		mnNewGame.add(mntmHelp);
 
 		JMenuItem mntmExit = new JMenuItem("Exit");
+		mntmExit.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
 		mnNewGame.add(mntmExit);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
