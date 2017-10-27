@@ -1,0 +1,63 @@
+# Use-Case Specification: Help 
+## Table of Contents
+tbd    
+
+
+### 1. Get information
+
+
+#### 1.1 Brief Description
+
+
+This use case allows the user to open a dialog window and check the rules of the game Dont get Angry. After clicking on the button with text "Menu" and then "Help", a dialog is opened. After pressing  the button with text "Ok" the dialog is closed and the game can start/ continue.
+
+### 2.Flow of Events
+
+
+#### 2.1 Basic Flow
+
+Activity Diagram: 
+
+https://github.com/mite134/DontGetAngry/blob/master/Use%20Cases/FP%20and%20Use%20Case.png
+
+
+
+Feature File:
+ (n/a)
+
+Mock-Up:
+
+https://github.com/mite134/DontGetAngry/blob/master/mock%20up%20pics/case6_menu.jpg
+ 
+
+#### 2.2 Alternative Flows
+
+
+(n/a)
+
+
+### 3.Special Requirements
+
+
+#### 3.1 Performance
+
+very fast
+
+
+#### 3.2 Other devices
+(n/a)
+
+
+
+### 4. Preconditions
+
+(n/a)
+
+### 5. Postconditions
+
+(
+n/a)
+
+### 6. Extension Points
+
+(n/a)

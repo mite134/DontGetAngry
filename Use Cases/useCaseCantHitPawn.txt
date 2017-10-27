@@ -1,0 +1,64 @@
+# Use-Case Specification: Dont hit friendly pawn
+## Table of Contents
+tbd    
+
+
+### 1. Get information
+
+
+#### 1.1 Brief Description
+
+
+This use case prevents the current player to hit his own pawn. The game is calculating
+the possible moves for every pawn from the current player color and decides where to land. If there is collision with the same color pawns, this pawn cant be moved.  
+
+### 2.Flow of Events
+
+
+#### 2.1 Basic Flow
+
+Activity Diagram: 
+
+https://github.com/mite134/DontGetAngry/blob/master/Use%20Cases/FP%20and%20Use%20Case.png
+
+
+
+Feature File:
+ (n/a)
+
+Mock-Up:
+
+https://github.com/mite134/DontGetAngry/blob/master/mock%20up%20pics/case4_cantHit.jpg
+ 
+
+#### 2.2 Alternative Flows
+
+
+(n/a)
+
+
+### 3.Special Requirements
+
+
+#### 3.1 Performance
+
+very fast
+
+
+#### 3.2 Other devices
+(n/a)
+
+
+
+### 4. Preconditions
+
+The current player pawn is placed on a position where the other current player pawn can land. As conclusion the position is not highlighted.
+
+### 5. Postconditions
+
+(
+n/a)
+
+### 6. Extension Points
+
+(n/a)

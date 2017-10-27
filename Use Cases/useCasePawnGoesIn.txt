@@ -1,0 +1,62 @@
+# Use-Case Specification: Pawn goes in 
+## Table of Contents
+tbd    
+
+
+### 1. Get information
+
+
+#### 1.1 Brief Description
+
+
+This use case allows the current player to bring his pawn on the board with randomly rolling 6 from the dice. This means that the pawn is placed on the starting position for the current player and the field color is changed.
+### 2.Flow of Events
+
+
+#### 2.1 Basic Flow
+
+Activity Diagram: 
+
+https://github.com/mite134/DontGetAngry/blob/master/Use%20Cases/FP%20and%20Use%20Case.png
+
+
+
+Feature File:
+ (n/a)
+
+Mock-Up:
+
+https://github.com/mite134/DontGetAngry/blob/master/mock%20up%20pics/case5_spawning.jpg
+ 
+
+#### 2.2 Alternative Flows
+
+
+(n/a)
+
+
+### 3.Special Requirements
+
+
+#### 3.1 Performance
+
+very fast
+
+
+#### 3.2 Other devices
+(n/a)
+
+
+
+### 4. Preconditions
+
+The only condition a pawn to go on the board is the current player to roll 6 from the dice.
+
+### 5. Postconditions
+
+(
+n/a)
+
+### 6. Extension Points
+
+(n/a)
