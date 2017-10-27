@@ -13,7 +13,7 @@ import controller.Interpreter;
 
 public class InterpreterTest {
 
-	private controller.Interpreter interpreter;
+	private Interpreter interpreter;
 	private view.GameScreen screen;
 
 	@Before
@@ -21,7 +21,7 @@ public class InterpreterTest {
 
 		System.out.println("setup");
 		screen = new view.GameScreen();
-		interpreter = new controller.Interpreter(screen);
+		interpreter = new Interpreter(screen);
 
 	}
 

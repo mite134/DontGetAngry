@@ -63,6 +63,7 @@ public class PawnTest {
     @Test
     public void setCoordinatesTest(){
         pawn.setPosition("SW");
+        assertEquals(pawn.getPosition(),"SW");
     }
 
     @After

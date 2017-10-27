@@ -17,12 +17,10 @@ import model.Player;
 public class GameTest {
 
 	private Game game;
-	private int active;
 	
 	@Before
     public void setUp(){
         game = new Game();
-        active = game.getActive();
     }
 
 	
@@ -157,6 +155,7 @@ public class GameTest {
     @Test
     public void printTest() {
     	game.print();
+    	assertFalse(game.equals(null));
     }
     
     @Test

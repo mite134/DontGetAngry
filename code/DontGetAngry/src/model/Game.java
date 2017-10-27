@@ -150,7 +150,7 @@ public class Game {
 				if (this.players[this.active].getPawns()[i].getPosition().equalsIgnoreCase(current)) {
 					this.players[this.active].setPawnPosition(pos, i);
 					checkCollision(pos);
-					if (this.players[this.active].Win()) {
+					if (this.players[this.active].win()) {
 						this.winner=true;
 					}
 					nextPlayer();

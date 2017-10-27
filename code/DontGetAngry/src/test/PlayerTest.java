@@ -1,14 +1,14 @@
 package test;
 
 
+import static org.junit.Assert.*;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import model.Pawn;
 import model.Player;
-
-import static org.junit.Assert.assertEquals;
 
 public class PlayerTest {
 
@@ -48,12 +48,12 @@ public class PlayerTest {
 
     @Test
     public void goInTest(){
-        player.goIn();
+        assertEquals(player.goIn(),"0");
     }
 
     @Test
     public void winTest(){
-        player.Win();
+        assertFalse(player.win());
     }
 
 
