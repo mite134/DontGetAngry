@@ -1,4 +1,4 @@
-package model;
+package test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -10,6 +10,9 @@ import java.util.LinkedList;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import model.Game;
+import model.Player;
 
 public class GameTest {
 
@@ -92,27 +95,6 @@ public class GameTest {
     }
     
     @Test
-    public void moveTest3() {
-    	game.goIn();
-    	LinkedList<String> options = new LinkedList();
-    	options.add("0-5");
-    	
-    	game.throwDice();
-    	System.out.println(game.getDie());
-    	game.throwDice();
-    	game.throwDice();
-    	game.throwDice();
-    	
-    	game.goIn();
-    	options.add("0-3");
-    	options.add("5-8");
-    	
-    	assertTrue(game.movePawn(options, "0", "3"));
-    	
-    	
-    }
-    
-    @Test
     public void calculateTest2() {
     	game.throwDice();
 
@@ -170,6 +152,11 @@ public class GameTest {
     	game.getRGB();
     }
 
+    @Test
+    public void winCheck() {
+    	assertFalse(game.isWinner());
+    }
+    
     @Test
     public void printTest() {
     	game.print();

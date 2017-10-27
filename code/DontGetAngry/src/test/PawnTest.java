@@ -1,4 +1,4 @@
-package model;
+package test;
 
 
 import org.junit.After;
@@ -54,8 +54,8 @@ public class PawnTest {
 
     @Test
     public void setColorTest(){
-        pawn.setColor("red");
-        assertEquals(pawn.getColor(), "red");
+        pawn.setColor("green");
+        assertEquals(pawn.getColor(), "green");
     }
 
 
