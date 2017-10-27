@@ -1,4 +1,7 @@
 # DontGetAngry
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1854cde9de584bffaf126059cd5d8076)](https://www.codacy.com/app/mite134/DontGetAngry?utm_source=github.com&utm_medium=referral&utm_content=mite134/DontGetAngry&utm_campaign=badger)
+
 -------------
 
 Git repository for the project: "Don't get angry". :shipit:
