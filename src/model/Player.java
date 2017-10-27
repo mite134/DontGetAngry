@@ -13,13 +13,34 @@ public class Player {
 		}
 	}
 
-	public void GoIn() {
+	public int GoIn() {
+		
+
 		for (int i = 0; i < 4; i++) {
 			if (pawns[i].getPosition().startsWith("S")) {
+				for (int b = 0; b < 4; b++) {
+					if (pawns[b].getPosition().equals((pawns[b].getEndNum() + 1) % 40 + "")) {
+						for (int c = 0; c < 4; c++) {
+							if (pawns[c].getPosition().equals((pawns[c].getEndNum() + 7) % 40 + "")) {
+								for (int d = 0; d < 4; d++) {
+									if (pawns[d].getPosition().equals((pawns[d].getEndNum() + 13) % 40 + "")) {
+										pawns[d].setPosition((pawns[d].getEndNum() + 19) % 40 + "");
+										return (pawns[b].getEndNum() + 19) % 40;
+									}
+								}
+								pawns[c].setPosition((pawns[c].getEndNum() + 13) % 40 + "");
+								return (pawns[c].getEndNum() + 13) % 40;
+							}
+						}
+						pawns[b].setPosition((pawns[b].getEndNum() + 7) % 40 + "");
+						return (pawns[b].getEndNum() + 7) % 40;
+					}
+				}
 				pawns[i].setPosition((pawns[i].getEndNum() + 1) % 40 + "");
-				break;
+				return (pawns[i].getEndNum() + 1) % 40;
 			}
 		}
+		return -1;
 	}
 
 	public boolean Win() {
