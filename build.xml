@@ -68,6 +68,19 @@
             <classpath refid="DontGetAngry.classpath"/>
         </junit>
     </target>
+	<target name="test">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="model.FieldTest" todir="${junit.output.dir}"/>
+            <test name="model.GameTest" todir="${junit.output.dir}"/>
+            <test name="model.InterpreterTest" todir="${junit.output.dir}"/>
+            <test name="model.PawnTest" todir="${junit.output.dir}"/>
+            <test name="model.PlayerTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="DontGetAngry.classpath"/>
+        </junit>
+    </target>
     <target name="GameScreen">
         <java classname="view.GameScreen" failonerror="true" fork="yes">
             <classpath refid="DontGetAngry.classpath"/>
