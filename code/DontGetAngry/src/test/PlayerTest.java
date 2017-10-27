@@ -48,7 +48,7 @@ public class PlayerTest {
 
     @Test
     public void goInTest(){
-        player.GoIn();
+        player.goIn();
     }
 
     @Test

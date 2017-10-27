@@ -65,7 +65,7 @@ public class GameTest {
     	LinkedList<String> options = new LinkedList();
     	options.add("0-5");
     	
-    	assertEquals(game.CalculateMoves(5), options);
+    	assertEquals(game.calculateMoves(5), options);
     	
     }
     
@@ -140,7 +140,7 @@ public class GameTest {
     	
     	options.add("36-1");
 
-    	assertEquals(game.CalculateMoves(5).toString(), "[10-15]");
+    	assertEquals(game.calculateMoves(5).toString(), "[10-15]");
     }
     
     @Test

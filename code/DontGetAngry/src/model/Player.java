@@ -13,7 +13,7 @@ public class Player {
 		}
 	}
 
-	public int GoIn() {
+	public int goIn() {
 		
 
 		for (int i = 0; i < 4; i++) {

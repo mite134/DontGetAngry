@@ -31,7 +31,7 @@ public class Game {
 	}
 
 	public int goIn() {
-		int temp=this.players[this.active].GoIn();
+		int temp=this.players[this.active].goIn();
 		checkCollision(temp+"");
 		return temp;
 	}
@@ -65,7 +65,7 @@ public class Game {
 		return (this.players[this.active].getPawns()[i].getPosition()
 				.endsWith(this.players[this.active].getPawns()[i].getColor().substring(0, 1).toUpperCase()));
 	}
-	public LinkedList<String> CalculateMoves(int dice) {
+	public LinkedList<String> calculateMoves(int dice) {
 		LinkedList<String> options = new LinkedList<String>();
 		for (int i = 0; i < 4; i++) {
 			if (!isInHouse(i)&&!this.players[this.active].getPawns()[i].getPosition().startsWith("S")) {
@@ -179,7 +179,7 @@ public class Game {
 	}
 
 	public LinkedList<String> throwDice() {
-		LinkedList<String> moves = CalculateMoves(this.die);
+		LinkedList<String> moves = calculateMoves(this.die);
 		if(moves.size()==0){
 			System.out.println("next");
 			nextPlayer();

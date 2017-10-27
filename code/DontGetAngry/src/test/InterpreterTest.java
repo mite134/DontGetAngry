@@ -28,6 +28,7 @@ public class InterpreterTest {
 	@Test
 	public void constructorTest() {
 		interpreter = new Interpreter(null);
+		assertNotNull(interpreter);
 	}
 
 	@Test
@@ -62,8 +63,8 @@ public class InterpreterTest {
 		screen.setFrmDontGetAngry(null);
 		screen.isToBeRestrted();
 		screen.getClicked();
-		screen.Win();
-		screen.WrongMove();
+		screen.win();
+		screen.wrongMove();
 		screen.failToPaint();
 		
 	}
