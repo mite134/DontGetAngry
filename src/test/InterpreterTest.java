@@ -13,7 +13,7 @@ import controller.Interpreter;
 
 public class InterpreterTest {
 
-	private controller.Interpreter interpreter;
+	private Interpreter interpreter;
 	private view.GameScreen screen;
 
 	@Before
@@ -21,13 +21,14 @@ public class InterpreterTest {
 
 		System.out.println("setup");
 		screen = new view.GameScreen();
-		interpreter = new controller.Interpreter(screen);
+		interpreter = new Interpreter(screen);
 
 	}
 
 	@Test
 	public void constructorTest() {
 		interpreter = new Interpreter(null);
+		assertNotNull(interpreter);
 	}
 
 	@Test
@@ -62,8 +63,8 @@ public class InterpreterTest {
 		screen.setFrmDontGetAngry(null);
 		screen.isToBeRestrted();
 		screen.getClicked();
-		screen.Win();
-		screen.WrongMove();
+		screen.win();
+		screen.wrongMove();
 		screen.failToPaint();
 		
 	}

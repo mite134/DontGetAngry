@@ -1,6 +1,5 @@
 package model;
 
-
 public class Player {
 	private Pawn[] pawns;
 	private String color;
@@ -13,8 +12,7 @@ public class Player {
 		}
 	}
 
-	public int GoIn() {
-		
+	public int goIn() {
 
 		for (int i = 0; i < 4; i++) {
 			if (pawns[i].getPosition().startsWith("S")) {
@@ -43,7 +41,7 @@ public class Player {
 		return -1;
 	}
 
-	public boolean Win() {
+	public boolean win() {
 		int pawnsIn = 0;
 		for (int i = 0; i < 4; i++) {
 			if (pawns[i].getPosition().startsWith("A") || pawns[i].getPosition().startsWith("B")
@@ -53,19 +51,19 @@ public class Player {
 		}
 		if (pawnsIn == 4) {
 			return true;
-		} else {
-			return false;
 		}
-	}
+		return false;
 
-	
+	}
 
 	public Pawn[] getPawns() {
 		return pawns;
 	}
-	public void setPawnPosition(String pos, int index){
+
+	public void setPawnPosition(String pos, int index) {
 		this.pawns[index].setPosition(pos);
 	}
+
 	public void setPawns(Pawn[] pawns) {
 		this.pawns = pawns;
 	}

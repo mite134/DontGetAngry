@@ -88,7 +88,7 @@ public class Interpreter {
 					this.screen.placeIcon(this.screen.getClicked().get(1), game.getRGB());
 					if (game.movePawn(currentRoll, this.screen.getClicked().get(0), this.screen.getClicked().get(1))) {
 						if(game.isWinner()){
-							this.screen.Win();
+							this.screen.win();
 							break;
 						}
 						for (String pos : this.enabledButtons) {
@@ -100,7 +100,7 @@ public class Interpreter {
 						rollPhase();
 					}
 				}else{
-					this.screen.WrongMove();
+					this.screen.wrongMove();
 					this.screen.cleanClicked();
 				}
 				// } catch (Exception e) {

@@ -147,12 +147,12 @@ public class GameScreen implements MouseListener {
 		initialize();
 	}
 
-	public void Win() {
+	public void win() {
 		JOptionPane.showMessageDialog(frmDontGetAngry, "YOU WIN!");
 		System.exit(0);
 	}
 
-	public void WrongMove() {
+	public void wrongMove() {
 		JOptionPane.showMessageDialog(frmDontGetAngry, "Wrong Move!");
 	}
 
