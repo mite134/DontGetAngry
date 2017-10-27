@@ -59,22 +59,17 @@
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="model.FieldTest" todir="${junit.output.dir}"/>
-            <test name="model.GameTest" todir="${junit.output.dir}"/>
-            <test name="model.InterpreterTest" todir="${junit.output.dir}"/>
-            <test name="model.PawnTest" todir="${junit.output.dir}"/>
-            <test name="model.PlayerTest" todir="${junit.output.dir}"/>
+            <test name="test.FieldTest" todir="${junit.output.dir}"/>
+            <test name="test.GameTest" todir="${junit.output.dir}"/>
+            <test name="test.InterpreterTest" todir="${junit.output.dir}"/>
+            <test name="test.PawnTest" todir="${junit.output.dir}"/>
+            <test name="test.PlayerTest" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
             <classpath refid="DontGetAngry.classpath"/>
         </junit>
     </target>
     <target name="GameScreen">
         <java classname="view.GameScreen" failonerror="true" fork="yes">
-            <classpath refid="DontGetAngry.classpath"/>
-        </java>
-    </target>
-    <target name="Main (6)">
-        <java classname="model.Main" failonerror="true" fork="yes">
             <classpath refid="DontGetAngry.classpath"/>
         </java>
     </target>
@@ -86,6 +81,11 @@
             <jvmarg line="-ea"/>
             <classpath refid="DontGetAngry.classpath"/>
         </junit>
+    </target>
+    <target name="Main (6)">
+        <java classname="model.Main" failonerror="true" fork="yes">
+            <classpath refid="DontGetAngry.classpath"/>
+        </java>
     </target>
     <target name="junitreport">
         <junitreport todir="${junit.output.dir}">
